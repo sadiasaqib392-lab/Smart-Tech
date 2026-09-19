@@ -57,7 +57,7 @@ export const ContactSection: React.FC = () => {
       `*Company:* ${formData.company || 'N/A'}\n` +
       `*Service Required:* ${formData.serviceRequired}\n` +
       `*Project Type:* ${formData.projectType}\n` +
-      `*Location:* ${formData.projectLocation || 'Sialkot'}\n` +
+      `*Location:* ${formData.projectLocation || 'Punjab, Pakistan'}\n` +
       `*Message:* ${formData.message || 'I would like to discuss my project requirements.'}`;
 
     window.open(
@@ -79,7 +79,7 @@ export const ContactSection: React.FC = () => {
 
           <RevealHeading delay={0.1}>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1C1917] tracking-tight">
-              Contact Smartech in <span className="text-[#E14D2A]">Sialkot</span>
+              Contact Smartech in <span className="text-[#E14D2A]">Punjab, Pakistan</span>
             </h2>
           </RevealHeading>
 
@@ -360,7 +360,7 @@ export const ContactSection: React.FC = () => {
                         <input
                           type="text"
                           name="projectLocation"
-                          placeholder="e.g. Sialkot, Daska"
+                          placeholder="e.g. Lahore, Faisalabad, Sialkot"
                           value={formData.projectLocation}
                           onChange={handleChange}
                           className="w-full px-3.5 py-2.5 bg-[#FAF8F5] border border-[#E8E5DF] text-sm text-[#1C1917] placeholder-stone-400 focus:outline-none focus:border-[#E14D2A] focus:bg-white rounded-lg transition-colors"

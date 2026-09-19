@@ -35,7 +35,7 @@ export const CartDrawer: React.FC = () => {
     fullName: '',
     phone: '',
     email: '',
-    city: 'Sialkot',
+    city: 'Punjab',
     projectType: 'Residential',
     installationRequired: true,
     notes: '',
@@ -79,7 +79,7 @@ export const CartDrawer: React.FC = () => {
     });
 
     msg += `--------------------------------\n`;
-    msg += `Please provide formal pricing, availability, and delivery/installation schedule for Sialkot / Punjab. Thank you!`;
+    msg += `Please provide formal pricing, availability, and delivery/installation schedule for Punjab, Pakistan. Thank you!`;
     return msg;
   };
 
@@ -128,7 +128,7 @@ export const CartDrawer: React.FC = () => {
               </div>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF8A65]">
-                  SMARTECH SIALKOT
+                  SMARTECH PUNJAB
                 </span>
                 <h3 className="font-heading text-lg font-bold uppercase tracking-wide">
                   Project Cart ({totalItemCount})
@@ -265,7 +265,7 @@ export const CartDrawer: React.FC = () => {
                     <input
                       type="text"
                       name="city"
-                      placeholder="e.g. Sialkot, Daska"
+                      placeholder="e.g. Lahore, Faisalabad, Sialkot"
                       value={formData.city}
                       onChange={handleInputChange}
                       className="w-full px-3.5 py-2 bg-[#FAF8F5] border border-[#E8E5DF] text-sm text-[#1C1917] focus:outline-none focus:border-[#E14D2A] focus:bg-white rounded-lg"
@@ -476,7 +476,7 @@ export const CartDrawer: React.FC = () => {
               </div>
 
               <p className="text-[10px] text-center text-[#57534E] font-mono">
-                📍 Fast dispatch and certified installation throughout Sialkot & Punjab
+                📍 Fast dispatch and certified installation throughout Punjab, Pakistan
               </p>
             </div>
           )}

@@ -15,7 +15,7 @@ export const SolarLoadCalculator: React.FC<SolarLoadCalculatorProps> = ({ onOpen
   const [hasNetMetering, setHasNetMetering] = useState<boolean>(true);
 
   // Computed Engineering Calculations
-  // Avg 1 kW produces approx 120-130 units/month in Punjab/Sialkot
+  // Avg 1 kW produces approx 120-130 units/month in Punjab, Pakistan
   const recommendedKw = Math.max(3, Math.round((monthlyUnits / 125) * 10) / 10);
   const panelCount580W = Math.ceil((recommendedKw * 1000) / 585);
   const estimatedAreaNeededSqFt = panelCount580W * 28; // ~28 sq ft per high-wattage panel
@@ -57,7 +57,7 @@ export const SolarLoadCalculator: React.FC<SolarLoadCalculatorProps> = ({ onOpen
             </RevealHeading>
             <RevealText delay={0.16}>
               <p className="text-sm text-[#57534E] mt-1 max-w-xl">
-                Calculate your required Solar System capacity, roof area requirements, Tier-1 panel quantities, and estimated monthly electricity savings for Sialkot & Punjab.
+                Calculate your required Solar System capacity, roof area requirements, Tier-1 panel quantities, and estimated monthly electricity savings for Punjab, Pakistan.
               </p>
             </RevealText>
           </div>

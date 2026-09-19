@@ -60,7 +60,7 @@ export const CallToAction: React.FC<CallToActionProps> = ({ onOpenQuoteModal }) 
 
         <RevealText delay={0.28}>
           <div className="pt-4 text-xs text-stone-400 flex flex-wrap items-center justify-center gap-4 uppercase text-[11px] tracking-wider font-semibold">
-            <span>📍 Serving Sialkot & Punjab</span>
+            <span>📍 Serving Punjab, Pakistan</span>
             <span>•</span>
             <span>⚡ Fast Quote Turnaround</span>
             <span>•</span>

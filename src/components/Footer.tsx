@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
               {COMPANY_INFO.tagline}
             </p>
             <p className="text-xs text-stone-400 leading-relaxed">
-              Complete technical engineering solutions provider for residential, commercial and industrial projects in Sialkot and throughout Punjab, Pakistan.
+              Complete technical engineering solutions provider for residential, commercial and industrial projects throughout Punjab, Pakistan.
             </p>
 
             <div className="pt-2">
@@ -226,7 +226,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
             © 2026 Smartech Electrical & Networking Solution. All Rights Reserved.
           </div>
           <div className="flex items-center gap-4">
-            <span>Sialkot, Pakistan</span>
+            <span>Punjab, Pakistan</span>
             <span>•</span>
             <button
               onClick={scrollToTop}

@@ -266,7 +266,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         {/* Modal Footer Actions */}
         <div className="p-4 border-t border-[#E8E5DF] bg-white flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="text-[11px] text-stone-500 font-mono">
-            Direct Supply & Engineering Execution: Sialkot & Punjab
+            Direct Supply & Engineering Execution: Punjab, Pakistan
           </div>
 
           <div className="flex items-center gap-2">

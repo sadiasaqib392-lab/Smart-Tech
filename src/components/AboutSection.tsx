@@ -3,9 +3,7 @@ import { SmartechLogo } from './SmartechLogo';
 import { 
   ChevronDown, 
   ChevronUp, 
-  CheckCircle2, 
-  ArrowRight,
-  Users
+  CheckCircle2
 } from 'lucide-react';
 import { MotionReveal } from './MotionReveal';
 
@@ -226,41 +224,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-              {/* CARD 1: DIRECTOR */}
-              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
-                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
-                  <img
-                    src={directorImg}
-                    alt="Sayyam Mughal - Director at Smartech"
-                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
-                      Director
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
-                    <div>
-                      <h3 className="font-heading text-2xl font-black text-[#1C1917]">
-                        Director
-                      </h3>
-                      <div className="text-xs font-bold text-[#E14D2A] uppercase tracking-wider mt-0.5">
-                        About Me
-                      </div>
-                    </div>
-
-                    <p className="text-sm text-[#57534E] leading-relaxed text-justify">
-                      Sayyam Mughal is the Director at Smartech, with a strong engineering background in Electrical Engineering, Embedded Systems, IoT, and Communication Technologies. He leads the development and execution of technology-driven solutions, combining technical expertise with strategic leadership, project management, and business-focused innovation. His experience spans IoT deployments, LoRaWAN, embedded systems, industrial automation, wireless communication, PCB development, smart monitoring, and renewable energy solutions. At Smartech, his vision is to deliver reliable, scalable, and innovative engineering solutions that create long-term value for clients and industries.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* CARD 2: CEO */}
+              {/* CARD 1: CEO */}
               <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
                 <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
                   <img
@@ -291,6 +255,40 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
                       Qasim Baig is the Chief Executive Officer of Smartech, with professional expertise in Electrical Engineering, Solar PV Systems, Embedded Systems, IoT, Communication Technologies, and Smart Energy Solutions.
                       He leads Smartech with a focus on developing and delivering innovative, reliable, and cost-effective technology and energy solutions. His technical experience includes Solar PV design and commissioning, electrical systems, industrial applications, IoT-based energy monitoring, PCB design, automation, and smart technology solutions.
                       With experience in executing 30+ residential and commercial Solar PV projects, including On-Grid, Off-Grid and Hybrid systems, he combines engineering expertise with project leadership to deliver practical and sustainable solutions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* CARD 2: DIRECTOR */}
+              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
+                  <img
+                    src={directorImg}
+                    alt="Sayyam Mughal - Director at Smartech"
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute top-3 right-3">
+                    <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
+                      Director
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div>
+                      <h3 className="font-heading text-2xl font-black text-[#1C1917]">
+                        Director
+                      </h3>
+                      <div className="text-xs font-bold text-[#E14D2A] uppercase tracking-wider mt-0.5">
+                        About Me
+                      </div>
+                    </div>
+
+                    <p className="text-sm text-[#57534E] leading-relaxed text-justify">
+                      Sayyam Mughal is the Director at Smartech, with a strong engineering background in Electrical Engineering, Embedded Systems, IoT, and Communication Technologies. He leads the development and execution of technology-driven solutions, combining technical expertise with strategic leadership, project management, and business-focused innovation. His experience spans IoT deployments, LoRaWAN, embedded systems, industrial automation, wireless communication, PCB development, smart monitoring, and renewable energy solutions. At Smartech, his vision is to deliver reliable, scalable, and innovative engineering solutions that create long-term value for clients and industries.
                     </p>
                   </div>
                 </div>
@@ -338,40 +336,25 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
           </div>
         </MotionReveal>
 
-        {/* 3. BOTTOM SECTION: OUR TEAM (ULTRA-VERTICAL PORTRAIT ORIENTATION) */}
+        {/* 3. BOTTOM SECTION: OUR TEAM */}
         <MotionReveal>
           <div className="max-w-sm sm:max-w-md mx-auto">
-            <div className="bg-white rounded-3xl border border-[#E8E5DF] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col group">
-              {/* Ultra-Vertical 9:16 Portrait Image Frame */}
-              <div className="relative w-full aspect-[9/16] bg-[#1C1917] overflow-hidden">
+            <div className="bg-white rounded-3xl border border-[#E8E5DF] overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col group">
+              {/* Clear Team Image */}
+              <div className="relative w-full aspect-[9/16] bg-[#FAF8F5] overflow-hidden">
                 <img
                   src={teamImg}
                   alt="Our Team - Smartech Electrical & Networking Solution"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-500"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/95 via-[#1C1917]/30 to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 sm:bottom-8 left-5 sm:left-7 right-5 sm:right-7 text-white space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
-                    <Users className="w-3.5 h-3.5" />
-                    <span>United Engineering Force</span>
-                  </div>
-                  <h3 className="font-heading text-2xl sm:text-3xl font-black text-white tracking-tight">
-                    Our Team
-                  </h3>
-                  <p className="text-xs sm:text-sm text-stone-200 leading-relaxed font-normal">
-                    The multidisciplinary engineers, project managers, and technical specialists of Smartech Electrical &amp; Networking Solution — working together to power dependable solar, networking, security, and electrical infrastructure across Pakistan.
-                  </p>
-                  <div className="pt-2">
-                    <button
-                      onClick={onOpenQuoteModal}
-                      className="w-full px-5 py-3 bg-[#E14D2A] hover:bg-[#C83B1B] text-white text-xs font-bold uppercase tracking-widest rounded-xl transition-all shadow-md inline-flex items-center justify-center gap-2 cursor-pointer hover:-translate-y-0.5"
-                    >
-                      <span>Connect With Our Team</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
+              </div>
+
+              {/* Just 'Our Team' text below the image */}
+              <div className="py-4 px-6 text-center bg-white border-t border-[#E8E5DF]">
+                <h3 className="font-heading text-xl sm:text-2xl font-black text-[#1C1917] tracking-tight">
+                  Our Team
+                </h3>
               </div>
             </div>
           </div>

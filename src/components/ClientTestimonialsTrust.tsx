@@ -95,7 +95,7 @@ export const ClientTestimonialsTrust: React.FC = () => {
 
             <RevealHeading delay={0.1}>
               <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1.5">
-                Trusted by Sialkot Exporters, Factories & Facilities
+                Trusted by Punjab Exporters, Factories & Facilities
               </h3>
             </RevealHeading>
           </div>

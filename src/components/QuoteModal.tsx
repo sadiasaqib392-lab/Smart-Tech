@@ -126,7 +126,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
               <div className="p-4 bg-[#FAF8F5] border border-[#E8E5DF] text-xs text-[#57534E] max-w-md mx-auto text-left space-y-1 rounded-xl font-mono">
                 <div>• Reference Category: <strong>{formData.projectType}</strong></div>
                 <div>• Item/Scope: <strong>{formData.itemOrService}</strong></div>
-                <div>• Direct Support: <strong>+92 334 4205974 (Sialkot)</strong></div>
+                <div>• Direct Support: <strong>+92 334 4205974 (Punjab, Pakistan)</strong></div>
               </div>
               <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button

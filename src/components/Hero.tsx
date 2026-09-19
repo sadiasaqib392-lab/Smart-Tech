@@ -12,7 +12,7 @@ import {
   RevealIcon,
 } from './MotionReveal';
 import { ArrowRight, MessageSquare, ShieldCheck, Sun, Camera, Network, Zap, Home, Shield, Activity, Wrench, Building2, Check } from 'lucide-react';
-import solarEngImg from '../assets/images/solar_electrical_eng_1787468705473.jpg';
+import solarEngImg from '../assets/images/regenerated_image_1789802097679.png';
 
 interface HeroProps {
   onOpenQuoteModal: () => void;
@@ -50,7 +50,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuoteModal, onNavigateToServic
                 Engineering Excellence
               </span>
               <span className="text-stone-300 text-xs font-semibold uppercase tracking-wider">
-                📍 Sialkot, Pakistan
+                📍 Punjab, Pakistan
               </span>
             </RevealText>
 

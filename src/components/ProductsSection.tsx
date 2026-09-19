@@ -120,7 +120,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
 
           <RevealText delay={0.16}>
             <p className="text-[#57534E] text-sm sm:text-base max-w-2xl mx-auto">
-              Direct sourcing of tested, certified hardware for residential, commercial and industrial deployments with quick dispatch across Sialkot and Punjab.
+              Direct sourcing of tested, certified hardware for residential, commercial and industrial deployments with quick dispatch across Punjab, Pakistan.
             </p>
           </RevealText>
         </div>

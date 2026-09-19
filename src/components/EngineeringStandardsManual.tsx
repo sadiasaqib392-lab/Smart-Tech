@@ -274,7 +274,7 @@ export const EngineeringStandardsManual: React.FC = () => {
           >
             <h3 className="font-heading text-base font-bold text-[#1C1917] uppercase tracking-wide mb-4 flex items-center gap-2">
               <MapPin className="w-4 h-4 text-[#E14D2A]" />
-              <span>Sialkot & Punjab Industrial Service Territory & Response Times</span>
+              <span>Punjab Industrial Service Territory & Response Times</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 bg-[#FAF8F5] border border-[#E8E5DF] rounded-xl">
