@@ -189,6 +189,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal, onNavigatePage
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-[#E14D2A] flex-shrink-0" />
+                <div>
+                  <span className="text-[10px] text-[#FF8A50] font-bold block uppercase leading-none">Director (Engr. Sayyam):</span>
+                  <a href="tel:+923130477583" className="hover:text-white font-bold transition-colors">
+                    +923130477583
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center gap-2.5">
                 <MessageSquare className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <a
                   href={`https://wa.me/${COMPANY_INFO.whatsappNumber}?text=${encodeURIComponent(

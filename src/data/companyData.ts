@@ -32,6 +32,8 @@ export const COMPANY_INFO = {
   fullAddress: 'Punjab, Pakistan',
   phone: '+92 334 4205974',
   phoneRaw: '+923344205974',
+  directorPhone: '+923130477583',
+  directorPhoneRaw: '+923130477583',
   email: 'smartech6@gmail.com',
   whatsappNumber: '923344205974',
   defaultWhatsAppMessage: 'Hello Smartech, I would like to discuss a technical project/requirement. Please provide more information.',

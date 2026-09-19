@@ -3,7 +3,8 @@ import { SmartechLogo } from './SmartechLogo';
 import { 
   ChevronDown, 
   ChevronUp, 
-  CheckCircle2
+  CheckCircle2,
+  Phone
 } from 'lucide-react';
 import { MotionReveal } from './MotionReveal';
 
@@ -41,7 +42,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
               </div>
 
               <div className="p-4 bg-[#FAF8F5] rounded-xl border border-[#E8E5DF] self-start md:self-auto shadow-2xs">
-                <SmartechLogo size="lg" variant="horizontal" showSubtitle={true} />
+                <SmartechLogo size="md" variant="horizontal" showSubtitle={true} />
               </div>
             </div>
 
@@ -225,22 +226,27 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
               {/* CARD 1: CEO */}
-              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
-                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
-                  <img
-                    src={ceoImg}
-                    alt="Qasim Baig - Chief Executive Officer at Smartech"
-                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
-                      CEO
-                    </span>
+              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group p-6 sm:p-7">
+                {/* Circular Portrait (No square container) */}
+                <div className="flex flex-col items-center justify-center pt-2 pb-6 border-b border-[#F0ECE6] relative">
+                  <div className="relative">
+                    <div className="w-48 h-48 sm:w-52 sm:h-52 rounded-full overflow-hidden shadow-md bg-stone-100 flex items-center justify-center">
+                      <img
+                        src={ceoImg}
+                        alt="Qasim Baig - Chief Executive Officer at Smartech"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="absolute top-1 right-1">
+                      <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
+                        CEO
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+                <div className="pt-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
                     <div>
                       <h3 className="font-heading text-2xl font-black text-[#1C1917]">
@@ -261,22 +267,27 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
               </div>
 
               {/* CARD 2: DIRECTOR */}
-              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
-                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
-                  <img
-                    src={directorImg}
-                    alt="Sayyam Mughal - Director at Smartech"
-                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
-                      Director
-                    </span>
+              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group p-6 sm:p-7">
+                {/* Circular Portrait (No square container) */}
+                <div className="flex flex-col items-center justify-center pt-2 pb-6 border-b border-[#F0ECE6] relative">
+                  <div className="relative">
+                    <div className="w-48 h-48 sm:w-52 sm:h-52 rounded-full overflow-hidden shadow-md bg-stone-100 flex items-center justify-center">
+                      <img
+                        src={directorImg}
+                        alt="Sayyam Mughal - Director at Smartech"
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="absolute top-1 right-1">
+                      <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
+                        Director
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+                <div className="pt-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
                     <div>
                       <h3 className="font-heading text-2xl font-black text-[#1C1917]">
@@ -290,27 +301,46 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
                     <p className="text-sm text-[#57534E] leading-relaxed text-justify">
                       Sayyam Mughal is the Director at Smartech, with a strong engineering background in Electrical Engineering, Embedded Systems, IoT, and Communication Technologies. He leads the development and execution of technology-driven solutions, combining technical expertise with strategic leadership, project management, and business-focused innovation. His experience spans IoT deployments, LoRaWAN, embedded systems, industrial automation, wireless communication, PCB development, smart monitoring, and renewable energy solutions. At Smartech, his vision is to deliver reliable, scalable, and innovative engineering solutions that create long-term value for clients and industries.
                     </p>
+
+                    {/* Director Contact Details */}
+                    <div className="mt-4 pt-3 border-t border-[#E8E5DF] flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Phone className="w-4 h-4 text-[#E14D2A]" />
+                        <span className="text-xs font-bold text-[#1C1917] uppercase tracking-wider">Contact Number:</span>
+                      </div>
+                      <a
+                        href="tel:+923130477583"
+                        className="text-sm font-black text-[#E14D2A] hover:underline"
+                      >
+                        +923130477583
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* CARD 3: OUR TECHNICIANS */}
-              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
-                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
-                  <img
-                    src={techniciansImg}
-                    alt="Our Technicians - Smartech Field Operations"
-                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-block px-3 py-1 bg-[#1C1917] text-white border border-stone-700 text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
-                      Field Engineering
-                    </span>
+              <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group p-6 sm:p-7">
+                {/* Circular Portrait (No square container) */}
+                <div className="flex flex-col items-center justify-center pt-2 pb-6 border-b border-[#F0ECE6] relative">
+                  <div className="relative">
+                    <div className="w-48 h-48 sm:w-52 sm:h-52 rounded-full overflow-hidden shadow-md bg-stone-100 flex items-center justify-center">
+                      <img
+                        src={techniciansImg}
+                        alt="Our Technicians - Smartech Field Operations"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="absolute top-1 right-1">
+                      <span className="inline-block px-3 py-1 bg-[#1C1917] text-white border border-stone-700 text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
+                        Field Engineering
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
+                <div className="pt-6 flex-1 flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
                     <div>
                       <h3 className="font-heading text-2xl font-black text-[#1C1917]">

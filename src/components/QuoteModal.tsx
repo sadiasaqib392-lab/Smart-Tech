@@ -86,16 +86,15 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
       >
         {/* Modal Header */}
         <div className="flex items-center justify-between p-5 sm:p-6 border-b border-stone-800 bg-[#1C1917] text-white">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#E14D2A] text-white flex items-center justify-center rounded-lg shadow-sm">
-              <FileText className="w-5 h-5" />
-            </div>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <SmartechLogo size="sm" theme="dark" variant="horizontal" />
+            <div className="hidden sm:block h-7 w-px bg-stone-700" />
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF8A65]">
-                Smartech Engineering & Sourcing
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF8A65] block">
+                Official Project Inquiry
               </span>
-              <h3 className="font-heading text-lg sm:text-xl font-bold text-white leading-tight">
-                Request an Official Quotation
+              <h3 className="font-heading text-base sm:text-lg font-bold text-white leading-tight">
+                Request Quotation
               </h3>
             </div>
           </div>

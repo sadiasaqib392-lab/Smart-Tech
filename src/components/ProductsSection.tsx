@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import inverterBrochureImg from '../assets/images/smartech_inverters_brochure_1789844458691.jpg';
 import { PRODUCTS_DATA, COMPANY_INFO } from '../data/companyData';
 import { ProductItem } from '../types';
 import { ProductModal } from './ProductModal';
@@ -166,6 +167,27 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
             </div>
           </div>
         </RevealButton>
+
+        {/* Solar PV & Inverters Feature Banner: Our Inverters */}
+        {(activeTab === 'solar' || activeTab === 'all') && (
+          <div className="mb-10 bg-white border border-[#E8E5DF] rounded-2xl p-4 sm:p-7 shadow-xs">
+            <div className="flex flex-col items-center">
+              <div className="w-full max-w-4xl overflow-hidden rounded-xl border border-[#E8E5DF] bg-[#FAF8F5] shadow-xs hover:shadow-md transition-shadow">
+                <img
+                  src={inverterBrochureImg}
+                  alt="Smartech Solar PV & Inverters - Our Inverters"
+                  className="w-full h-auto object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="mt-5 text-center">
+                <h3 className="font-heading text-2xl sm:text-3xl font-black text-[#1C1917] uppercase tracking-wide">
+                  Our Inverters
+                </h3>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Products Grid */}
         {filteredProducts.length === 0 ? (

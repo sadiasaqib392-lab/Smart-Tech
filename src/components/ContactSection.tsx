@@ -134,6 +134,38 @@ export const ContactSection: React.FC = () => {
                     </div>
                   </div>
 
+                  {/* Director Contact (Direct Line) */}
+                  <div className="flex items-start gap-4 p-3.5 rounded-lg bg-[#FFF7ED] border border-[#FED7AA]/80">
+                    <div className="w-10 h-10 bg-[#E14D2A] text-white flex items-center justify-center flex-shrink-0 rounded-lg shadow-xs">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div className="text-[11px] text-[#E14D2A] font-extrabold uppercase tracking-wider">
+                          Director Contact (Direct Line)
+                        </div>
+                        <span className="text-[10px] bg-red-100 text-[#C83B1B] font-bold px-2 py-0.5 rounded-full">
+                          Engr. Sayyam Mughal
+                        </span>
+                      </div>
+                      <div className="mt-1 flex items-center justify-between gap-2">
+                        <a
+                          href="tel:+923130477583"
+                          className="text-base sm:text-lg font-black text-[#1C1917] hover:text-[#E14D2A] transition-colors"
+                        >
+                          +923130477583
+                        </a>
+                        <a
+                          href="tel:+923130477583"
+                          className="px-3 py-1 bg-[#E14D2A] hover:bg-[#C83B1B] text-white text-xs font-bold rounded-md transition-colors"
+                        >
+                          Call Now
+                        </a>
+                      </div>
+                      <div className="text-xs text-[#57534E] mt-0.5">Electrical Engineering, IoT & Projects Consultation</div>
+                    </div>
+                  </div>
+
                   {/* WhatsApp */}
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center flex-shrink-0 rounded-lg">

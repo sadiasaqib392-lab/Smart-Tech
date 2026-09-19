@@ -61,6 +61,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, activePage, se
                 {COMPANY_INFO.phone}
               </a>
             </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[#E14D2A] font-bold">Director:</span>
+              <a href="tel:+923130477583" className="text-[#FF8A50] hover:text-white font-bold transition-colors">
+                +923130477583
+              </a>
+            </div>
             <div className="flex items-center gap-2 text-stone-400">
               <Shield className="w-3.5 h-3.5 text-[#E14D2A]" />
               <span className="uppercase text-[10px] tracking-wider font-bold">Engineering Excellence</span>
@@ -108,26 +114,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, activePage, se
             <SmartechLogo size="md" variant="horizontal" />
           </button>
 
-          {/* Desktop 7-Page Navigation Tabs */}
-          <div className="hidden md:flex items-center gap-1 lg:gap-1.5 text-xs font-bold uppercase tracking-wider bg-[#F5F2EB] p-1.5 rounded-lg border border-[#E8E5DF]">
+          {/* Desktop 7-Page Navigation Tabs with Adobe Arabic 20px */}
+          <div className="hidden md:flex items-center gap-1 lg:gap-1.5 bg-[#F5F2EB] p-1.5 rounded-lg border border-[#E8E5DF]">
             {navPages.map((page) => {
               const isActive = activePage === page.id;
               return (
                 <button
                   key={page.id}
                   onClick={() => handlePageSelect(page.id)}
-                  className={`px-3.5 py-1.5 rounded-md transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
+                  className={`px-3 lg:px-3.5 py-1.5 rounded-md transition-all duration-200 flex items-center gap-1.5 cursor-pointer font-bold ${
                     isActive
                       ? 'bg-[#E14D2A] text-white shadow-xs'
-                      : 'text-[#57534E] hover:text-[#E14D2A] hover:bg-white/90'
+                      : 'text-[#44403C] hover:text-[#E14D2A] hover:bg-white/90'
                   }`}
                 >
-                  <span className={`text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-mono font-bold ${
-                    isActive ? 'bg-white/25 text-white' : 'bg-[#E8E5DF] text-[#57534E]'
+                  <span className={`text-[11px] w-4.5 h-4.5 rounded-full flex items-center justify-center font-mono font-bold ${
+                    isActive ? 'bg-white/25 text-white' : 'bg-[#E8E5DF] text-[#44403C]'
                   }`}>
                     {page.badge}
                   </span>
-                  <span>{page.label}</span>
+                  <span
+                    className="font-adobe-arabic text-[20px] font-bold leading-none tracking-normal"
+                    style={{ fontFamily: "'Adobe Arabic', 'Amiri', 'Traditional Arabic', serif", fontSize: '20px' }}
+                  >
+                    {page.label}
+                  </span>
                 </button>
               );
             })}
@@ -199,7 +210,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, activePage, se
         <div className="md:hidden fixed inset-x-0 top-[60px] bg-[#FAF8F5] border-b border-[#E8E5DF] shadow-xl transition-all duration-300 z-40 max-h-[calc(100vh-70px)] overflow-y-auto">
           <div className="px-5 py-6 space-y-4">
             <div className="pb-3 border-b border-[#E8E5DF] flex items-center justify-between">
-              <SmartechLogo size="sm" variant="horizontal" />
+              <SmartechLogo size="md" variant="horizontal" />
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -219,7 +230,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, activePage, se
                   <button
                     key={page.id}
                     onClick={() => handlePageSelect(page.id)}
-                    className={`px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors flex items-center justify-between text-left cursor-pointer ${
+                    className={`px-4 py-3 rounded-lg transition-colors flex items-center justify-between text-left cursor-pointer ${
                       isActive
                         ? 'bg-[#FFF7ED] text-[#E14D2A] border-l-4 border-[#E14D2A]'
                         : 'text-[#1C1917] hover:bg-[#F5F2EB] hover:text-[#E14D2A]'
@@ -231,7 +242,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuoteModal, activePage, se
                       }`}>
                         {page.badge}
                       </span>
-                      <span>{page.label}</span>
+                      <span
+                        className="font-adobe-arabic text-[20px] font-bold leading-none"
+                        style={{ fontFamily: "'Adobe Arabic', 'Amiri', 'Traditional Arabic', serif", fontSize: '20px' }}
+                      >
+                        {page.label}
+                      </span>
                     </div>
                     {isActive ? (
                       <span className="text-[10px] font-bold text-[#E14D2A] bg-[#FFEDD5] px-2 py-0.5 rounded-md">
