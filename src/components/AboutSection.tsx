@@ -9,9 +9,9 @@ import {
 } from 'lucide-react';
 import { MotionReveal } from './MotionReveal';
 
-import directorImg from '../assets/images/director_sayyam_1789742744262.jpg';
-import ceoImg from '../assets/images/ceo_qasim_1789742762191.jpg';
-import techniciansImg from '../assets/images/our_technicians_1789742779552.jpg';
+import directorImg from '../assets/images/extracted_director.png';
+import ceoImg from '../assets/images/extracted_ceo.png';
+import techniciansImg from '../assets/images/extracted_technician.png';
 import teamImg from '../assets/images/regenerated_image_1789752835475.png';
 
 interface AboutSectionProps {
@@ -228,15 +228,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
               {/* CARD 1: DIRECTOR */}
               <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
-                <div className="relative aspect-square w-full bg-[#1C1917] overflow-hidden">
+                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
                   <img
                     src={directorImg}
                     alt="Sayyam Mughal - Director at Smartech"
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 right-4">
+                  <div className="absolute top-3 right-3">
                     <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
                       Director
                     </span>
@@ -263,15 +262,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
 
               {/* CARD 2: CEO */}
               <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
-                <div className="relative aspect-square w-full bg-[#1C1917] overflow-hidden">
+                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
                   <img
                     src={ceoImg}
                     alt="Qasim Baig - Chief Executive Officer at Smartech"
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 right-4">
+                  <div className="absolute top-3 right-3">
                     <span className="inline-block px-3 py-1 bg-[#E14D2A] text-white text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
                       CEO
                     </span>
@@ -300,15 +298,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenQuoteModal }) 
 
               {/* CARD 3: OUR TECHNICIANS */}
               <div className="bg-white rounded-2xl border border-[#E8E5DF] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
-                <div className="relative aspect-square w-full bg-[#1C1917] overflow-hidden">
+                <div className="relative h-60 sm:h-64 w-full bg-[#FAF8F5] overflow-hidden flex items-center justify-center p-3 border-b border-[#F0ECE6]">
                   <img
                     src={techniciansImg}
                     alt="Our Technicians - Smartech Field Operations"
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 right-4">
+                  <div className="absolute top-3 right-3">
                     <span className="inline-block px-3 py-1 bg-[#1C1917] text-white border border-stone-700 text-[10px] font-extrabold uppercase tracking-widest rounded-md shadow-xs">
                       Field Engineering
                     </span>
