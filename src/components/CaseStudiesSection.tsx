@@ -1,243 +1,379 @@
-import React, { useState } from 'react';
-import { CheckCircle2, ShieldCheck, ArrowRight, Zap, Camera, Network, Sliders } from 'lucide-react';
-import { RevealHeading, RevealText, RevealCard, RevealButton } from './MotionReveal';
+import React, { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  X,
+  ShieldCheck,
+} from 'lucide-react';
+import { RevealHeading, RevealText } from './MotionReveal';
+
+// 10 Colorful 3D Animated Cartoon Images for the manual horizontal slider
+import cartoonImg01 from '../assets/images/cartoon_slide_one_1790150746569.jpg';
+import cartoonImg02 from '../assets/images/cartoon_slide_two_1790150767867.jpg';
+import cartoonImg03 from '../assets/images/cartoon_slide_three_1790150796539.jpg';
+import cartoonImg04 from '../assets/images/cartoon_slide_four_1790150814957.jpg';
+import cartoonImg05 from '../assets/images/cartoon_slide_five_1790150832111.jpg';
+import cartoonImg06 from '../assets/images/cartoon_slide_six_1790150852131.jpg';
+import cartoonImg07 from '../assets/images/cartoon_slide_seven_1790150876047.jpg';
+import cartoonImg08 from '../assets/images/cartoon_slide_eight_1790150891537.jpg';
+import cartoonImg09 from '../assets/images/cartoon_slide_nine_1790150908532.jpg';
+import cartoonImg10 from '../assets/images/cartoon_slide_ten_1790150925998.jpg';
+
+interface ProjectSlide {
+  id: number;
+  image: string;
+}
+
+const PROJECT_SLIDES: ProjectSlide[] = [
+  { id: 1, image: cartoonImg01 },
+  { id: 2, image: cartoonImg02 },
+  { id: 3, image: cartoonImg03 },
+  { id: 4, image: cartoonImg04 },
+  { id: 5, image: cartoonImg05 },
+  { id: 6, image: cartoonImg06 },
+  { id: 7, image: cartoonImg07 },
+  { id: 8, image: cartoonImg08 },
+  { id: 9, image: cartoonImg09 },
+  { id: 10, image: cartoonImg10 },
+];
 
 interface CaseStudiesSectionProps {
   onOpenQuoteModal: (projectType: string, category: string) => void;
 }
 
-export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = ({ onOpenQuoteModal }) => {
-  const [activeSector, setActiveSector] = useState<'all' | 'industrial' | 'commercial' | 'residential'>('all');
+export const CaseStudiesSection: React.FC<CaseStudiesSectionProps> = () => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(1);
+  const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
 
-  const caseStudies = [
-    {
-      id: 'case-1',
-      sector: 'industrial',
-      title: '50kW Hybrid Solar & Power Distribution Plant',
-      client: 'Leather & Sports Goods Export Facility, Sialkot Small Industrial Estate',
-      category: 'Solar Energy & Industrial Electrical',
-      icon: <Zap className="w-4 h-4 text-amber-500" />,
-      image: '/src/assets/images/solar_electrical_eng_1787468705473.jpg',
-      specs: [
-        '96x 585W N-Type Tier-1 Mono PERC Solar Panels',
-        '2x 25kW 3-Phase Synchronized Hybrid Inverters',
-        '40kWh High-Voltage LiFePO4 Lithium Battery Bank',
-        'Full GEPCO 3-Phase Net Metering Commissioning',
-      ],
-      metrics: {
-        unitsGenerated: '6,200 Units/Month',
-        dieselSaved: '75% Generator Reduction',
-        completionTime: '12 Days Turnkey',
-      },
-      quoteTag: '50kW Industrial Hybrid Solar System',
-    },
-    {
-      id: 'case-2',
-      sector: 'commercial',
-      title: '32-Channel IP Surveillance & Fiber Backbone Infrastructure',
-      client: 'Multi-Storey Corporate Plaza & Shopping Center, Paris Road, Sialkot',
-      category: 'CCTV & Structured Networking',
-      icon: <Camera className="w-4 h-4 text-[#E14D2A]" />,
-      image: '/src/assets/images/cctv_smart_security_1787468722184.jpg',
-      specs: [
-        '32x 4MP Hikvision AcuSense Smart AI Perimeter Cameras',
-        '32-Channel 4K NVR with 32TB Surveillance Storage (30-Day Retention)',
-        'Cat6A 10G Certified Copper Drops with 24-Port Gigabit PoE+ Switches',
-        'Armored Outdoor Fiber Optic Backbone connecting 4 floor racks',
-      ],
-      metrics: {
-        unitsGenerated: '100% Blindspot Elimination',
-        dieselSaved: 'Multi-Floor Gigabit Data',
-        completionTime: '8 Days Commissioning',
-      },
-      quoteTag: 'Commercial 32-Channel IP CCTV & Fiber Network',
-    },
-    {
-      id: 'case-3',
-      sector: 'industrial',
-      title: 'Data Center Server Racks & High-Density Cat6 Cabling',
-      client: 'Surgical Instruments Manufacturing Plant & IT Server Room, Daska Road',
-      category: 'Structured Data & Networking',
-      icon: <Network className="w-4 h-4 text-emerald-600" />,
-      image: '/src/assets/images/network_datacenter_cabling_1787468735328.jpg',
-      specs: [
-        '42U Floor Standing Server Rack with Dual High-Airflow Fans',
-        '120+ Cat6 Drops with Fluke Channel Testing Certification',
-        'Ubiquiti UniFi Cloud Gateway & 48-Port PoE Layer-3 Managed Switch',
-        'Dedicated Chemical Earth Pit (<0.8 Ohm Grounding for Server Protection)',
-      ],
-      metrics: {
-        unitsGenerated: '99.99% Network Uptime',
-        dieselSaved: 'Fluke Pass Tested 100%',
-        completionTime: '6 Days Execution',
-      },
-      quoteTag: 'Server Room Data Center Rack & Structured Cabling',
-    },
-    {
-      id: 'case-4',
-      sector: 'residential',
-      title: '15kW On-Grid Solar & Whole-House Smart Automation',
-      client: '1-Kanal Luxury Residence, Citi Housing, Sialkot',
-      category: 'Solar & Smart Home Automation',
-      icon: <Sliders className="w-4 h-4 text-orange-500" />,
-      image: '/src/assets/images/solar_electrical_eng_1787468705473.jpg',
-      specs: [
-        '26x 580W Bifacial Solar Panels with Elevated Structure',
-        '15kW On-Grid String Inverter with GEPCO Green Meter',
-        'Smart Touch WiFi/Zigbee Lighting & AC Thermostat Relays',
-        'Video Door Intercom with Mobile Access & Smart Fingerprint Lock',
-      ],
-      metrics: {
-        unitsGenerated: '1,900 Units/Month',
-        dieselSaved: 'Zero Net WAPDA Bill',
-        completionTime: '5 Days Setup',
-      },
-      quoteTag: '15kW Luxury Residential Solar & Automation',
-    },
-  ];
+  // Manual slide navigation (strictly no autoplay/interval)
+  const handlePrev = useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev === 0 ? PROJECT_SLIDES.length - 1 : prev - 1));
+  }, []);
 
-  const filteredStudies = activeSector === 'all'
-    ? caseStudies
-    : caseStudies.filter((c) => c.sector === activeSector);
+  const handleNext = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev === PROJECT_SLIDES.length - 1 ? 0 : prev + 1));
+  }, []);
+
+  const handleSelectSlide = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  // Keyboard navigation support
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxOpen) {
+        if (e.key === 'Escape') setLightboxOpen(false);
+        if (e.key === 'ArrowLeft') handlePrev();
+        if (e.key === 'ArrowRight') handleNext();
+        return;
+      }
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handlePrev, handleNext, lightboxOpen]);
+
+  const currentSlide = PROJECT_SLIDES[currentIndex];
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? '100%' : '-100%',
+      opacity: 0.8,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        x: { type: 'spring', stiffness: 280, damping: 30 },
+        opacity: { duration: 0.25 },
+      },
+    },
+    exit: (dir: number) => ({
+      x: dir > 0 ? '-100%' : '100%',
+      opacity: 0.8,
+      transition: {
+        x: { type: 'spring', stiffness: 280, damping: 30 },
+        opacity: { duration: 0.22 },
+      },
+    }),
+  };
 
   return (
-    <section className="py-14 bg-[#FAF8F5]">
+    <section className="py-12 lg:py-16 bg-[#FAF8F5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+        {/* Section Header: Clean title 'Projects' with no sector tabs */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 pb-6 border-b border-[#E8E5DF]">
           <div className="space-y-2">
             <RevealText delay={0.05}>
-              <div className="inline-block bg-[#E14D2A] text-white text-[10px] px-3.5 py-1 font-bold uppercase tracking-widest rounded-md shadow-xs">
-                <span>Engineering Project Portfolio</span>
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#E14D2A]">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Verified Engineering Portfolio</span>
               </div>
             </RevealText>
             <RevealHeading delay={0.1}>
-              <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#1C1917] tracking-tight">
-                Executed Projects & <span className="text-[#E14D2A]">Case Studies</span>
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1C1917] tracking-tight">
+                Projects
               </h2>
             </RevealHeading>
-            <RevealText delay={0.16}>
+            <RevealText delay={0.15}>
               <p className="text-[#57534E] text-sm sm:text-base max-w-2xl leading-relaxed">
-                Explore real-world engineering installations delivered by Smartech across Sialkot, Gujranwala, Daska, and Punjab with verified technical deliverables.
+                Explore our turnkey solar, electrical switchgear, CCTV surveillance, data cabling, and automation engineering gallery.
               </p>
             </RevealText>
           </div>
 
-          {/* Sector Filters */}
-          <RevealButton delay={0.2}>
-            <div className="flex items-center gap-1.5 bg-white p-1.5 border border-[#E8E5DF] rounded-lg shadow-xs">
-              {[
-                { id: 'all', label: 'All Projects' },
-                { id: 'industrial', label: 'Industrial' },
-                { id: 'commercial', label: 'Commercial' },
-                { id: 'residential', label: 'Residential' },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveSector(tab.id as any)}
-                  className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer ${
-                    activeSector === tab.id
-                      ? 'bg-[#E14D2A] text-white shadow-xs'
-                      : 'text-[#57534E] hover:text-[#E14D2A] hover:bg-[#FAF8F5]'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+          {/* Top Manual Slider Controls & Counter */}
+          <div className="flex items-center gap-3 self-start sm:self-end">
+            <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-[#E8E5DF] rounded-lg shadow-2xs">
+              <span className="text-xs font-mono font-bold text-[#E14D2A]">
+                {String(currentIndex + 1).padStart(2, '0')}
+              </span>
+              <span className="text-xs text-[#A8A29E]">/</span>
+              <span className="text-xs font-mono text-[#57534E]">
+                {String(PROJECT_SLIDES.length).padStart(2, '0')}
+              </span>
             </div>
-          </RevealButton>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous project photo"
+                className="w-10 h-10 flex items-center justify-center bg-white hover:bg-[#1C1917] hover:text-white text-[#1C1917] border border-[#E8E5DF] rounded-lg shadow-2xs hover:shadow-md transition-all duration-200 cursor-pointer active:scale-95"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next project photo"
+                className="w-10 h-10 flex items-center justify-center bg-[#E14D2A] hover:bg-[#C83B1B] text-white rounded-lg shadow-2xs hover:shadow-md transition-all duration-200 cursor-pointer active:scale-95"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredStudies.map((project, pIdx) => (
-            <RevealCard key={project.id} delay={(pIdx % 2) * 0.1}>
-              <div
-                className="group bg-white border-l-4 border-[#1C1917] hover:border-[#E14D2A] border-y border-r border-[#E8E5DF] rounded-xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full"
+        {/* Main Horizontal Image Slider (Fills Entire Frame Boldly, No Overlay Names) */}
+        <div className="relative bg-[#1C1917] rounded-2xl overflow-hidden shadow-2xl border border-[#292524]">
+          {/* Main Slide Display with Full Edge-to-Edge Image */}
+          <div className="relative h-[480px] sm:h-[580px] lg:h-[660px] w-full overflow-hidden bg-[#0A0A0A]">
+            <AnimatePresence custom={direction} initial={false} mode="wait">
+              <motion.div
+                key={currentIndex}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(_e, { offset }) => {
+                  const swipeThreshold = 50;
+                  if (offset.x > swipeThreshold) {
+                    handlePrev();
+                  } else if (offset.x < -swipeThreshold) {
+                    handleNext();
+                  }
+                }}
+                className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing flex items-center justify-center"
               >
-                <div>
-                  {/* Project Image & Category Pill */}
-                  <div className="relative h-56 bg-stone-900 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out opacity-90"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    
-                    <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#E14D2A] text-white text-[10px] font-bold uppercase tracking-wider rounded-md">
-                        {project.icon}
-                        <span>{project.category}</span>
-                      </span>
-                      <span className="px-2.5 py-1 bg-black/70 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider rounded-md border border-white/20">
-                        {project.sector}
-                      </span>
-                    </div>
+                {/* Full-bleed crisp image filling entire container */}
+                <img
+                  src={currentSlide.image}
+                  alt={`Project ${currentIndex + 1}`}
+                  className="w-full h-full object-cover select-none"
+                  draggable={false}
+                />
 
-                    <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
-                      <div className="text-[11px] text-stone-300 font-mono">{project.client}</div>
-                      <h3 className="font-heading text-lg sm:text-xl font-bold leading-tight mt-0.5 text-white">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
+                {/* Subtle vignette for controls legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 pointer-events-none" />
 
-                  {/* Technical Specifications */}
-                  <div className="p-5 space-y-4">
-                    <div>
-                      <h4 className="text-[10px] font-bold uppercase tracking-widest text-stone-500 mb-2">
-                        Engineering Scope & Equipment Deployed:
-                      </h4>
-                      <div className="space-y-1.5">
-                        {project.specs.map((spec, sIdx) => (
-                          <div key={sIdx} className="flex items-start gap-2 text-xs text-[#57534E]">
-                            <CheckCircle2 className="w-4 h-4 text-[#E14D2A] flex-shrink-0 mt-0.5" />
-                            <span>{spec}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Highlight Metrics */}
-                    <div className="grid grid-cols-3 gap-2 pt-3 border-t border-stone-100">
-                      <div className="p-2.5 bg-[#FAF8F5] border border-[#E8E5DF] rounded-lg text-center">
-                        <div className="text-[9px] text-[#57534E] uppercase font-bold">Generation / Gain</div>
-                        <div className="text-xs font-black text-[#E14D2A] font-mono mt-0.5">{project.metrics.unitsGenerated}</div>
-                      </div>
-                      <div className="p-2.5 bg-[#FAF8F5] border border-[#E8E5DF] rounded-lg text-center">
-                        <div className="text-[9px] text-[#57534E] uppercase font-bold">Efficiency Metric</div>
-                        <div className="text-xs font-black text-emerald-600 font-mono mt-0.5">{project.metrics.dieselSaved}</div>
-                      </div>
-                      <div className="p-2.5 bg-[#FAF8F5] border border-[#E8E5DF] rounded-lg text-center">
-                        <div className="text-[9px] text-[#57534E] uppercase font-bold">Duration</div>
-                        <div className="text-xs font-black text-[#1C1917] font-mono mt-0.5">{project.metrics.completionTime}</div>
-                      </div>
-                    </div>
-                  </div>
+                {/* Minimalist Top Indicator Badge (No image names, only slide count) */}
+                <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
+                  <span className="px-3 py-1.5 bg-black/75 backdrop-blur-md text-white text-xs font-mono font-bold rounded-lg border border-white/15 shadow-md">
+                    {String(currentIndex + 1).padStart(2, '0')} / {String(PROJECT_SLIDES.length).padStart(2, '0')}
+                  </span>
                 </div>
 
-                {/* Bottom Action */}
-                <div className="p-4 bg-[#FAF8F5] border-t border-[#E8E5DF] flex items-center justify-between">
-                  <span className="text-[11px] text-[#57534E] font-mono flex items-center gap-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#E14D2A]" />
-                    <span>PEC & IEEE Compliant</span>
-                  </span>
-
+                {/* Fullscreen Preview Trigger */}
+                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20">
                   <button
-                    onClick={() => onOpenQuoteModal(project.quoteTag, project.category)}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#E14D2A] hover:bg-[#C83B1B] text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-colors cursor-pointer shadow-xs hover:-translate-y-0.5"
+                    type="button"
+                    onClick={() => setLightboxOpen(true)}
+                    className="p-2.5 bg-black/75 hover:bg-[#E14D2A] text-white rounded-lg backdrop-blur-md border border-white/15 transition-colors cursor-pointer shadow-md"
+                    title="View Fullscreen"
+                    aria-label="View Fullscreen"
                   >
-                    <span>Request Similar Quote</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <Maximize2 className="w-4 h-4" />
                   </button>
                 </div>
-              </div>
-            </RevealCard>
-          ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Left & Right In-Slide Navigation Arrows */}
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous slide"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center bg-black/65 hover:bg-[#E14D2A] text-white rounded-full backdrop-blur-md border border-white/20 transition-all duration-200 cursor-pointer active:scale-90 shadow-xl"
+            >
+              <ChevronLeft className="w-7 h-7" />
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next slide"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center bg-black/65 hover:bg-[#E14D2A] text-white rounded-full backdrop-blur-md border border-white/20 transition-all duration-200 cursor-pointer active:scale-90 shadow-xl"
+            >
+              <ChevronRight className="w-7 h-7" />
+            </button>
+          </div>
+
+          {/* Indicator Dots Bar */}
+          <div className="bg-[#141211] border-t border-[#292524] px-4 py-3.5 flex items-center justify-between">
+            <span className="text-[11px] text-stone-400 font-mono hidden sm:inline-block">
+              Use arrow buttons or keyboard &larr; &rarr; to slide
+            </span>
+
+            {/* 10 Interactive Dots */}
+            <div className="flex items-center gap-1.5 mx-auto sm:mx-0">
+              {PROJECT_SLIDES.map((slide, idx) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => handleSelectSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-2 transition-all duration-200 rounded-full cursor-pointer ${
+                    currentIndex === idx
+                      ? 'w-7 bg-[#E14D2A]'
+                      : 'w-2 bg-stone-700 hover:bg-stone-500'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <span className="text-xs text-stone-400 font-mono">
+              Slide {currentIndex + 1} of {PROJECT_SLIDES.length}
+            </span>
+          </div>
+        </div>
+
+        {/* 10 Horizontal Thumbnail Strip for Instant Jump (No Names) */}
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-2.5">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#57534E]">
+              Project Gallery Thumbnails (Click to view)
+            </span>
+            <span className="text-xs text-[#78716C] font-mono">
+              {currentIndex + 1} / {PROJECT_SLIDES.length}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-5 sm:grid-cols-5 lg:grid-cols-10 gap-2">
+            {PROJECT_SLIDES.map((slide, idx) => {
+              const isSelected = currentIndex === idx;
+              return (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => handleSelectSlide(idx)}
+                  className={`group relative aspect-[4/3] rounded-lg overflow-hidden border-2 transition-all duration-200 cursor-pointer ${
+                    isSelected
+                      ? 'border-[#E14D2A] ring-2 ring-[#E14D2A]/40 scale-102 z-10'
+                      : 'border-transparent opacity-65 hover:opacity-100 hover:border-stone-400'
+                  }`}
+                >
+                  <img
+                    src={slide.image}
+                    alt={`Thumbnail ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    className={`absolute inset-0 transition-opacity ${
+                      isSelected
+                        ? 'bg-[#E14D2A]/15'
+                        : 'bg-black/30 group-hover:bg-transparent'
+                    }`}
+                  />
+                  <span className="absolute bottom-1 right-1 text-[10px] font-mono font-bold px-1 py-0.5 rounded bg-black/75 text-white leading-none">
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
+
+      {/* Lightbox / Fullscreen Modal (No Names) */}
+      <AnimatePresence>
+        {lightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 flex flex-col justify-between p-4 sm:p-8"
+          >
+            {/* Lightbox Header */}
+            <div className="flex items-center justify-between text-white pb-4 border-b border-white/10">
+              <span className="text-sm font-mono text-[#E14D2A] font-bold">
+                Photo {String(currentIndex + 1).padStart(2, '0')} / {String(PROJECT_SLIDES.length).padStart(2, '0')}
+              </span>
+              <button
+                type="button"
+                onClick={() => setLightboxOpen(false)}
+                className="p-2 rounded-lg bg-white/10 hover:bg-[#E14D2A] text-white transition-colors cursor-pointer"
+                aria-label="Close fullscreen view"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Lightbox Main Image & Navigation */}
+            <div className="relative flex-grow flex items-center justify-center py-4 overflow-hidden">
+              <img
+                src={currentSlide.image}
+                alt={`Photo ${currentIndex + 1}`}
+                className="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl"
+              />
+
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-3 bg-black/60 hover:bg-[#E14D2A] text-white rounded-full transition-colors cursor-pointer"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-3 bg-black/60 hover:bg-[#E14D2A] text-white rounded-full transition-colors cursor-pointer"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Lightbox Footer */}
+            <div className="text-center text-xs text-stone-400 font-mono pt-2">
+              Press Escape to exit fullscreen · Left / Right arrows to navigate
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

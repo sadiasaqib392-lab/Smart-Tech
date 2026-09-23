@@ -4,24 +4,13 @@ import {
   RevealHeading,
   RevealText,
   RevealCard,
-  RevealImage,
-  RevealButton,
 } from './MotionReveal';
 import {
   Home,
   Building2,
-  Store,
-  Building,
-  Factory,
-  GraduationCap,
-  Stethoscope,
-  Tractor,
-  HardHat,
   CheckCircle2,
   ArrowRight,
-  Shield,
 } from 'lucide-react';
-import networkCablingImg from '../assets/images/network_datacenter_cabling_1787468735328.jpg';
 
 interface ProjectSolutionsSectionProps {
   onOpenQuoteModal: (environmentName?: string) => void;
@@ -36,21 +25,8 @@ export const ProjectSolutionsSection: React.FC<ProjectSolutionsSectionProps> = (
         return Home;
       case 'Building2':
         return Building2;
-      case 'Store':
-        return Store;
-      case 'Building':
-        return Building;
-      case 'Factory':
-        return Factory;
-      case 'GraduationCap':
-        return GraduationCap;
-      case 'Stethoscope':
-        return Stethoscope;
-      case 'Tractor':
-        return Tractor;
-      case 'HardHat':
       default:
-        return HardHat;
+        return Building2;
     }
   };
 
@@ -78,44 +54,8 @@ export const ProjectSolutionsSection: React.FC<ProjectSolutionsSectionProps> = (
           </RevealText>
         </div>
 
-        {/* Featured Infrastructure Banner with Generated Image */}
-        <RevealImage delay={0.1}>
-          <div className="group mb-14 bg-[#1C1917] text-white overflow-hidden shadow-xl border-l-4 border-[#E14D2A] border-y border-r border-[#292524] grid grid-cols-1 lg:grid-cols-12 items-center rounded-2xl">
-            <div className="lg:col-span-5 h-64 lg:h-full relative overflow-hidden bg-[#292524]">
-              <img
-                src={networkCablingImg}
-                alt="Smartech Structured Cabling and Server Network Rack"
-                className="w-full h-full object-cover opacity-85 group-hover:scale-108 transition-transform duration-700 ease-out"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1C1917]/40 to-[#1C1917] hidden lg:block" />
-            </div>
-            <div className="lg:col-span-7 p-7 sm:p-10 space-y-4 text-left">
-              <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#FF8A65]">
-                <Shield className="w-4 h-4" />
-                <span>Multi-Sector Technical Capability</span>
-              </div>
-              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                Engineered for Precision & Operational Longevity
-              </h3>
-              <p className="text-stone-300 text-sm sm:text-base leading-relaxed">
-                Whether you need clean solar power for an off-grid agricultural tubewell, high-density Cat6 cabling for a corporate office, or certified earthing and switchgear for a manufacturing plant, Smartech has the technical expertise.
-              </p>
-              <div className="pt-2">
-                <button
-                  onClick={() => onOpenQuoteModal('Custom Project Consultation')}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#E14D2A] hover:bg-[#C83B1B] text-white font-bold text-xs uppercase tracking-widest transition-all rounded-lg shadow-md cursor-pointer hover:-translate-y-0.5"
-                >
-                  <span>Request Project Consultation</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </RevealImage>
-
-        {/* 9 Environment Cards Grid with Geometric Balance */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Environment Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {PROJECT_ENVIRONMENTS.map((env, index) => {
             const Icon = getIcon(env.iconName);
 

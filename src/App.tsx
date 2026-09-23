@@ -26,7 +26,6 @@ import { CartToast } from './components/CartToast';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { CctvNetworkCalculator } from './components/CctvNetworkCalculator';
 import { EngineeringStandardsManual } from './components/EngineeringStandardsManual';
-import { BoqPricingGuide } from './components/BoqPricingGuide';
 import { ClientTestimonialsTrust } from './components/ClientTestimonialsTrust';
 import { ComprehensiveServicesDirectory } from './components/ComprehensiveServicesDirectory';
 import { TopHomeImageSlider } from './components/TopHomeImageSlider';
@@ -65,7 +64,7 @@ export default function App() {
     services: { num: '2/7', title: 'Turnkey Services & Solutions', desc: 'Design, Supply, Installation, Testing & Commissioning', icon: <Wrench className="w-4 h-4" /> },
     products: { num: '3/7', title: 'Equipment Store & Catalog', desc: 'Browse Hardware & Order with Add to Cart Functionality', icon: <ShoppingBag className="w-4 h-4" /> },
     calculator: { num: '4/7', title: 'Solar Calculator & Blueprints', desc: 'Estimate kW Load, Roof Area, Tier-1 Panels & Bill Savings', icon: <Calculator className="w-4 h-4" /> },
-    projects: { num: '5/7', title: 'Executed Projects & Case Studies', desc: 'Real Track Record Across Facilities in Punjab, Pakistan', icon: <FolderKanban className="w-4 h-4" /> },
+    projects: { num: '5/7', title: 'Projects', desc: 'Real Track Record Across Facilities in Punjab, Pakistan', icon: <FolderKanban className="w-4 h-4" /> },
     about: { num: '6/7', title: 'About Smartech', desc: 'Corporate Profile, Core Expertise, Leadership & Team', icon: <Info className="w-4 h-4" /> },
     contact: { num: '7/7', title: 'Contact & Quotation Desk', desc: 'Direct WhatsApp, Punjab Office, RFQ Form & Technical FAQs', icon: <Mail className="w-4 h-4" /> },
   };
@@ -161,9 +160,6 @@ export default function App() {
               {activePage === 'products' && (
                 <div className="space-y-8">
                   <ProductsSection onOpenQuoteModal={handleOpenQuoteModal} />
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <BoqPricingGuide onOpenQuoteModal={handleOpenQuoteModal} />
-                  </div>
                 </div>
               )}
 
@@ -172,17 +168,14 @@ export default function App() {
                 <div className="space-y-10 py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <SolarLoadCalculator onOpenQuoteModal={handleOpenQuoteModal} />
                   <CctvNetworkCalculator onOpenQuoteModal={handleOpenQuoteModal} />
-                  <ProjectSolutionsSection onOpenQuoteModal={handleOpenQuoteModal} />
                 </div>
               )}
 
-              {/* PAGE 5: PROJECTS & CASE STUDIES */}
+              {/* PAGE 5: PROJECTS */}
               {activePage === 'projects' && (
-                <div className="space-y-8">
+                <div className="space-y-12">
                   <CaseStudiesSection onOpenQuoteModal={handleOpenQuoteModal} />
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <BoqPricingGuide onOpenQuoteModal={handleOpenQuoteModal} />
-                  </div>
+                  <ProjectSolutionsSection onOpenQuoteModal={handleOpenQuoteModal} />
                 </div>
               )}
 

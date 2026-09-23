@@ -5,6 +5,7 @@ import { ProductItem } from '../types';
 import { ProductModal } from './ProductModal';
 import { useCart } from '../context/CartContext';
 import { RevealHeading, RevealText, RevealCard, RevealButton } from './MotionReveal';
+import { SolarPvInvertersSection } from './SolarPvInvertersSection';
 import {
   Sun,
   Camera,
@@ -40,8 +41,8 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
 
   const tabs = [
     { id: 'all', label: 'All Equipment', icon: Layers, count: PRODUCTS_DATA.length },
-    { id: 'solar', label: 'Solar PV & Inverters', icon: Sun, count: PRODUCTS_DATA.filter(p => p.category === 'solar').length },
     { id: 'photon-sunways', label: 'Photon & Sunways (Inverters & ESS)', icon: Cpu, count: PRODUCTS_DATA.filter(p => p.category === 'photon-sunways').length },
+    { id: 'solar', label: 'Solar PV & Inverters', icon: Sun, count: PRODUCTS_DATA.filter(p => p.category === 'solar').length },
     { id: 'cctv', label: 'CCTV & Security', icon: Camera, count: PRODUCTS_DATA.filter(p => p.category === 'cctv').length },
     { id: 'electrical', label: 'Electrical Switchgear', icon: Zap, count: PRODUCTS_DATA.filter(p => p.category === 'electrical').length },
     { id: 'earthing', label: 'Earthing & Grounding', icon: Shield, count: PRODUCTS_DATA.filter(p => p.category === 'earthing').length },
@@ -168,125 +169,91 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
           </div>
         </RevealButton>
 
-        {/* Solar PV & Inverters Feature Banner: Our Inverters */}
-        {(activeTab === 'solar' || activeTab === 'all') && (
-          <div className="mb-10 bg-white border border-[#E8E5DF] rounded-2xl p-4 sm:p-7 shadow-xs">
-            <div className="flex flex-col items-center">
-              <div className="w-full max-w-4xl overflow-hidden rounded-xl border border-[#E8E5DF] bg-[#FAF8F5] shadow-xs hover:shadow-md transition-shadow">
-                <img
-                  src={inverterBrochureImg}
-                  alt="Smartech Solar PV & Inverters - Our Inverters"
-                  className="w-full h-auto object-contain"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="mt-5 text-center">
-                <h3 className="font-heading text-2xl sm:text-3xl font-black text-[#1C1917] uppercase tracking-wide">
-                  Our Inverters
-                </h3>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Products Grid */}
-        {filteredProducts.length === 0 ? (
-          <div className="text-center py-12 bg-white border border-[#E8E5DF] p-6 rounded-lg">
-            <p className="text-stone-500 text-sm mb-3">No equipment found matching your criteria.</p>
-            <button
-              onClick={() => {
-                setActiveTab('all');
-                setSearchQuery('');
-              }}
-              className="px-4 py-1.5 bg-[#1C1917] text-white text-xs font-bold uppercase tracking-widest rounded-lg hover:bg-[#E14D2A] cursor-pointer"
-            >
-              Reset Filters
-            </button>
+        {/* When activeTab is solar: Render the dedicated Solar PV & Inverters Slider & 2-Column Cart Grid */}
+        {activeTab === 'solar' ? (
+          <div className="mb-10">
+            <SolarPvInvertersSection />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredProducts.map((product, pIdx) => {
-              const CategoryIcon = getCategoryIcon(product.category);
-              const qty = itemQuantities[product.id] || 1;
-              const cartItemMatch = cartItems.find((i) => i.id === product.id);
+          /* Products Grid for Other Categories / All */
+          filteredProducts.length === 0 ? (
+            <div className="text-center py-12 bg-white border border-[#E8E5DF] p-6 rounded-lg">
+              <p className="text-stone-500 text-sm mb-3">No equipment found matching your criteria.</p>
+              <button
+                onClick={() => {
+                  setActiveTab('all');
+                  setSearchQuery('');
+                }}
+                className="px-4 py-1.5 bg-[#1C1917] text-white text-xs font-bold uppercase tracking-widest rounded-lg hover:bg-[#E14D2A] cursor-pointer"
+              >
+                Reset Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {filteredProducts.map((product, pIdx) => {
+                const CategoryIcon = getCategoryIcon(product.category);
+                const qty = itemQuantities[product.id] || 1;
+                const cartItemMatch = cartItems.find((i) => i.id === product.id);
 
-              return (
-                <RevealCard key={product.id} delay={(pIdx % 3) * 0.08}>
-                  <div
-                    className="group flex flex-col justify-between bg-white border-l-4 border-[#1C1917] hover:border-[#E14D2A] border-y border-r border-[#E8E5DF] p-5 rounded-lg shadow-xs hover:shadow-lg transition-all duration-300 h-full hover:-translate-y-1.5"
-                  >
-                    <div>
-                      {/* Top Meta Bar */}
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#FFF7ED] text-[#E14D2A] text-[10px] font-bold uppercase tracking-wider rounded-md border border-[#FED7AA]/60">
-                          <CategoryIcon className="w-3 h-3 text-[#E14D2A]" />
-                          <span>{product.categoryLabel}</span>
+                return (
+                  <RevealCard key={product.id} delay={(pIdx % 3) * 0.08}>
+                    <div
+                      className="group flex flex-col justify-between bg-white border-l-4 border-[#1C1917] hover:border-[#E14D2A] border-y border-r border-[#E8E5DF] p-5 rounded-lg shadow-xs hover:shadow-lg transition-all duration-300 h-full hover:-translate-y-1.5"
+                    >
+                      <div>
+                        {/* Top Meta Bar */}
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#FFF7ED] text-[#E14D2A] text-[10px] font-bold uppercase tracking-wider rounded-md border border-[#FED7AA]/60">
+                            <CategoryIcon className="w-3 h-3 text-[#E14D2A]" />
+                            <span>{product.categoryLabel}</span>
+                          </div>
+                          <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md">
+                            {product.availability}
+                          </span>
                         </div>
-                        <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md">
-                          {product.availability}
-                        </span>
-                      </div>
 
-                      {/* Product Media Display (Video or Image) */}
-                      {product.videoUrl ? (
-                        <div className="relative mb-3.5 rounded-lg overflow-hidden bg-black border border-[#E8E5DF] shadow-inner group/media">
-                          <video
-                            src={product.videoUrl}
-                            className="w-full h-44 object-cover transition-transform duration-700 ease-out group-hover/media:scale-105"
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            controls
-                          />
-                          <div className="absolute top-2 left-2 pointer-events-none">
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-600 text-white text-[9px] font-bold uppercase tracking-wider rounded-md shadow-xs">
-                              <Play className="w-2.5 h-2.5 fill-current" />
-                              Live Video Showcase
-                            </span>
+                        {/* Product Media Display (Image) */}
+                        {product.imageUrl && (
+                          <div
+                            onClick={() => setSelectedProduct(product)}
+                            className="relative mb-3.5 rounded-lg overflow-hidden bg-stone-100 border border-[#E8E5DF] group/media cursor-pointer h-44 flex items-center justify-center"
+                          >
+                            <img
+                              src={product.imageUrl}
+                              alt={product.name}
+                              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/media:scale-105"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover/media:bg-black/20 transition-colors flex items-center justify-center">
+                              <span className="opacity-0 group-hover/media:opacity-100 transition-opacity px-3 py-1 bg-white/90 text-[#1C1917] text-xs font-bold rounded-md shadow-sm">
+                                View Specs & Data
+                              </span>
+                            </div>
+                            {product.name === 'APSUN' && (
+                              <div className="absolute top-2 left-2 pointer-events-none z-10">
+                                <span className="px-2 py-0.5 bg-[#1C1917]/95 text-white font-extrabold text-[10px] tracking-wider uppercase rounded-md border border-stone-600 shadow-xs">
+                                  APSUN
+                                </span>
+                              </div>
+                            )}
+                            {product.category === 'photon-sunways' && (
+                              <div className="absolute top-2 left-2 pointer-events-none z-10">
+                                <span className="px-2 py-0.5 bg-[#1C1917]/90 text-white font-black text-[9px] tracking-wider uppercase rounded-md border border-stone-600 shadow-xs">
+                                  {product.brand.includes('Sunways') ? 'SUNWAYS' : 'PHOTON'}
+                                </span>
+                              </div>
+                            )}
+                            {product.gallery && product.gallery.length > 1 && (
+                              <div className="absolute bottom-2 right-2 pointer-events-none">
+                                <span className="px-2 py-0.5 bg-[#1C1917]/80 text-white text-[9px] font-bold rounded-md flex items-center gap-1 shadow-xs">
+                                  <Layers className="w-2.5 h-2.5 text-[#FB923C]" />
+                                  {product.gallery.length} Photos
+                                </span>
+                              </div>
+                            )}
                           </div>
-                        </div>
-                      ) : product.imageUrl ? (
-                        <div
-                          onClick={() => setSelectedProduct(product)}
-                          className="relative mb-3.5 rounded-lg overflow-hidden bg-stone-100 border border-[#E8E5DF] group/media cursor-pointer h-44 flex items-center justify-center"
-                        >
-                          <img
-                            src={product.imageUrl}
-                            alt={product.name}
-                            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/media:scale-110"
-                            loading="lazy"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover/media:bg-black/25 transition-colors duration-300 flex items-center justify-center">
-                            <span className="opacity-0 group-hover/media:opacity-100 transition-all duration-300 translate-y-2 group-hover/media:translate-y-0 px-2.5 py-1 bg-white/95 text-[#1C1917] text-[10px] font-bold uppercase tracking-wider shadow-sm rounded-md flex items-center gap-1">
-                              <Eye className="w-3 h-3 text-[#E14D2A]" />
-                              View Gallery & Specs
-                            </span>
-                          </div>
-                          {product.name === 'APSUN' && (
-                            <div className="absolute top-2 left-2 pointer-events-none z-10">
-                              <span className="px-2 py-0.5 bg-[#1C1917]/95 text-white font-extrabold text-[10px] tracking-wider uppercase rounded-md border border-stone-600 shadow-xs">
-                                APSUN
-                              </span>
-                            </div>
-                          )}
-                          {product.category === 'photon-sunways' && (
-                            <div className="absolute top-2 left-2 pointer-events-none z-10">
-                              <span className="px-2 py-0.5 bg-[#1C1917]/90 text-white font-black text-[9px] tracking-wider uppercase rounded-md border border-stone-600 shadow-xs">
-                                {product.brand.includes('Sunways') ? 'SUNWAYS' : 'PHOTON'}
-                              </span>
-                            </div>
-                          )}
-                          {product.gallery && product.gallery.length > 1 && (
-                            <div className="absolute bottom-2 right-2 pointer-events-none">
-                              <span className="px-2 py-0.5 bg-[#1C1917]/80 text-white text-[9px] font-bold rounded-md flex items-center gap-1 shadow-xs">
-                                <Layers className="w-2.5 h-2.5 text-[#FB923C]" />
-                                {product.gallery.length} Photos
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      ) : null}
+                        )}
 
                       {/* Product Name */}
                       <h3 className="font-heading text-base font-bold text-[#1C1917] mb-1 leading-snug">
@@ -386,7 +353,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenQuoteMod
               );
             })}
           </div>
-        )}
+        ))}
 
         {/* Product Detail Modal */}
         <ProductModal
