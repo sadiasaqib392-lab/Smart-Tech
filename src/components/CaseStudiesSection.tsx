@@ -12,7 +12,7 @@ import { RevealHeading, RevealText } from './MotionReveal';
 // 10 Colorful 3D Animated Cartoon Images for the manual horizontal slider
 import cartoonImg01 from '../assets/images/cartoon_slide_one_1790150746569.jpg';
 import cartoonImg02 from '../assets/images/cartoon_slide_two_1790150767867.jpg';
-import cartoonImg03 from '../assets/images/cartoon_slide_three_1790150796539.jpg';
+import cartoonImg03 from '../assets/images/regenerated_image_1790154646089.jpg';
 import cartoonImg04 from '../assets/images/cartoon_slide_four_1790150814957.jpg';
 import cartoonImg05 from '../assets/images/cartoon_slide_five_1790150832111.jpg';
 import cartoonImg06 from '../assets/images/cartoon_slide_six_1790150852131.jpg';
